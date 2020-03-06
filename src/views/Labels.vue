@@ -1,7 +1,7 @@
 <template>
-    <div>labels.vue
-        <Nav/>
-    </div>
+    <Layout>
+    labels.vue
+    </Layout>
 </template>
 
 <script lang="ts">
@@ -10,6 +10,3 @@
     };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
