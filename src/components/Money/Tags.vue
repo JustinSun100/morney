@@ -30,6 +30,7 @@
             } else {
                 this.selectTags.push(tag);
             }
+            this.$emit('update:value',this.selectTags)
         }
 
         create() {
