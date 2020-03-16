@@ -1,24 +1,28 @@
 <template>
     <div>
         <label class="notes">
-            <span class="name">备注</span>
+            <span class="name">{{this.filename}}</span>
             <input type="text"
                    v-model="value"
-                   placeholder="在这里输入备注">
+                   :placeholder="this.placeholder">
         </label>
     </div>
 </template>
 
 <script lang="ts">
-    import Vue from 'vue'
-    import {Component, Watch} from 'vue-property-decorator';
+    import Vue from 'vue';
+    import {Component, Prop, Watch} from 'vue-property-decorator';
 
     @Component
-    export default class Notes extends Vue{
-        value= '';
+    export default class Notes extends Vue {
+        value = '';
+
+        @Prop({required: true}) filename!: string;
+        @Prop() placeholder?: string;
+
         @Watch('value')
-        onValueChange(value: string){
-            this.$emit('update:value',value)
+        onValueChange(value: string) {
+            this.$emit('update:value', value);
         }
     }
 </script>
@@ -30,9 +34,11 @@
         padding-left: 16px;
         display: flex;
         align-items: center;
+
         .name {
             padding-right: 16px;
         }
+
         input {
             height: 64px;
             flex-grow: 1;
