@@ -50,6 +50,8 @@
         remove() {
             if (this.tag) {
                 tagListModel.remove(this.tag.id);
+            }else {
+                window.alert('删除失败')
             }
         }
         goback(){
