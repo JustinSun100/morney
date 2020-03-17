@@ -3,7 +3,8 @@
         <label class="formItem">
             <span class="name">{{this.filename}}</span>
             <input type="text"
-                   v-model="value"
+                   :value="value"
+                   @input="onValueChange($event.target.value)"
                    :placeholder="this.placeholder">
         </label>
     </div>
@@ -15,7 +16,7 @@
 
     @Component
     export default class FormItem extends Vue {
-        value = '';
+        @Prop({default:''}) readonly value!: string;
 
         @Prop({required: true}) filename!: string;
         @Prop() placeholder?: string;
