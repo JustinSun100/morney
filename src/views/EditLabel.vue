@@ -30,32 +30,30 @@
         tag?: { id: string; name: string } = undefined;
 
         created() {
-            const id = this.$route.params.id;
-            tagListModel.fetch();
-            const tags = tagListModel.data;
-            const tag = tags.filter(t => t.id === id)[0];
-            if (tag) {
-                this.tag = tag;
-            } else {
+            this.tag=window.findTag(this.$route.params.id)
+            if (!this.tag) {
                 this.$router.replace('/404');
             }
         }
 
         update(name: string) {
             if (this.tag) {
-                tagListModel.update(this.tag.id, name);
+                window.updateTag(this.tag.id,name);
             }
         }
 
         remove() {
             if (this.tag) {
-                tagListModel.remove(this.tag.id);
-            }else {
-                window.alert('删除失败')
+                if (window.removeTag(this.tag.id)) {
+                    this.$router.back();
+                } else {
+                    alert('删除失败');
+                }
             }
         }
-        goback(){
-            this.$router.back()
+
+        goback() {
+            this.$router.back();
         }
 
     }
