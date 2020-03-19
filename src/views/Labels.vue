@@ -1,5 +1,5 @@
 <template>
-    <Layout>
+    <Layout class="wrapper">
         <div class="tags">
             <router-link class="tag" v-for="tag in tags" :key="tag.id"
                          :to="`/labels/edit/${tag.id}`">
@@ -35,7 +35,10 @@
     }
 </script>
 <style lang="scss" scoped>
+
     .tags {
+        overflow: auto;
+        height: 80%;
         background: white;
         font-size: 16px;
         padding-left: 16px;
@@ -62,6 +65,7 @@
         height: 40px;
 
         &-wrapper {
+            height: 15%;
             text-align: center;
             padding: 16px;
             margin-top: 44-16px;

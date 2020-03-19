@@ -6,7 +6,7 @@
         <div class="notes">
             <FormItem filename="备注" placeholder="这里输入备注" @update:value="onUpdateNotes"/>
         </div>
-        <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
+        <Tags />
     </Layout>
 </template>
 
@@ -31,9 +31,6 @@
         };
 
 
-        onUpdateTags(value: string[]) {
-            this.record.tags = value;
-        }
 
         onUpdateNotes(value: string) {
             this.record.notes = value;
